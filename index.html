@@ -1,75 +1,77 @@
 <!DOCTYPE html>
+
 <head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>TFB Nutrition</title>
-   <meta name="description" content="TFB Nutrition">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <link rel="stylesheet" href="style.css">
-   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TFB Nutrition</title>
+    <meta name="description" content="TFB Nutrition">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-    <h1>Calculate Calories & Macros</h1>
-    <p>These calculations are based on being 'moderatively active' on training days and the 'sedentary lifetyle' on off days when participating in <a href="https://www.thefightersbody.com/">The Fighter's Body program </a> by Sean Fagan. Please refer to the nutrition PDF for full information.</p>
-    <form>
-            <div class="form-group row">
-               <label for="inputweight" class="col-sm-1 col-form-label"><b>Weight</b></label>
-              <div class="col-sm-3">
-                <input type="weight" class="form-control" id="pounds" name="pounds" placeholder="enter your weight in lbs" >
-              </div>
+                <h1>Calculate Calories & Macros</h1>
+                <p>These calculations are based on being 'moderatively active' on training days and the 'sedentary lifetyle' on off days when participating in <a href="https://www.thefightersbody.com/">The Fighter's Body program </a> by Sean Fagan. Please refer to the nutrition PDF for full information.</p>
+                <form>
+                    <div class="form-group row">
+                        <label for="inputweight" class="col-sm-1 col-form-label"><b>Weight</b></label>
+                        <div class="col-sm-3">
+                            <input type="weight" class="form-control" id="pounds" name="pounds" placeholder="enter your weight in lbs">
+                        </div>
+                    </div>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-1 pt-0"><b>Goal</b></legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="goal" id="fatloss" value="fatloss">
+                                    <label class="form-check-label" for="fatloss">
+                                        Fat loss
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="goal" id="maintenance" value="maintenance" checked>
+                                    <label class="form-check-label" for="maintenance">
+                                        Maintenance
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="goal" id="maingain" value="massgain">
+                                    <label class="form-check-label" for="maingain">
+                                        Mass gain
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary" onclick="results(); return false">Calculate Calories & Macros</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <fieldset class="form-group">
-              <div class="row">
-                 <legend class="col-form-label col-sm-1 pt-0"><b>Goal</b></legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="goal" id="fatloss" value="fatloss">
-                    <label class="form-check-label" for="fatloss">
-                      Fat loss
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="goal" id="maintenance" value="maintenance" checked>
-                    <label class="form-check-label" for="maintenance">
-                      Maintenance
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="goal" id="maingain" value="massgain">
-                    <label class="form-check-label" for="maingain">
-                      Mass gain
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary" onclick="results(); return false">Calculate Calories & Macros</button>
-              </div>
-            </div>
-          </form>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">
             <div class="col-md-4">
-<h2>Training Days</h2>
-<p>Calories: <span id="cals1"></span></p>
-<p>Carbs: <span id="td_carbs"></span></p>
-<p>Protein: <span id="Protein1"></span></p>
-<p>Fat: <span id="td_fat"></span></p>
-</div>
-<div class="col-md-4">
-<h2>Off Days</h2>
-<p>Calories: <span id="cals2"></span></p>
-<p>Carbs: <span id="od_carbs"></span</p>
+                <h2>Training Days</h2>
+                <p>Calories: <span id="cals1"></span></p>
+                <p>Carbs: <span id="td_carbs"></span></p>
+                <p>Protein: <span id="Protein1"></span></p>
+                <p>Fat: <span id="td_fat"></span></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Off Days</h2>
+                <p>Calories: <span id="cals2"></span></p>
+                <p>Carbs: <span id="od_carbs"></span</p>
 <p>Protein: <span id="Protein2"></span</p>
 <p>Fat: <span id="od_fat"></span</p>
 </div>
