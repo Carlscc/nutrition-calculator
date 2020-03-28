@@ -1,7 +1,7 @@
 
 const results = () => {
     event.preventDefault()
-const find = (id) => { return document.getElementById(id)}
+    const find = (id) => { return document.getElementById(id) }
 
 
     let weight = find("pounds").value
