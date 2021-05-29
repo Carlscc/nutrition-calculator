@@ -1,8 +1,9 @@
 
 const results = () => {
     event.preventDefault()
-    const find = (id) => { return document.getElementById(id) }
-
+    const find = (id) => { 
+        return document.getElementById(id) 
+    };
 
     let weight = find("pounds").value
     //used the median values from ranges in Sean's PDF to calculate protein and carbs (protein remains same, carbs differ if training or off day)
@@ -21,22 +22,19 @@ const results = () => {
         fatLossOff = (calories - fatCalsOff) / 9
         find("td_fat").innerHTML = Math.round(fatLossTrain)
         find("od_fat").innerHTML = Math.round(fatLossOff)
-    }
-    else if (find("maintenance").checked){
+    } else if (find("maintenance").checked){
         calories = weight * 15
         fatMainTrain = (calories - fatCalsTrain) / 9
         fatMainOff = (calories - fatCalsOff )/ 9
         find("td_fat").innerHTML = Math.round(fatMainTrain)
         find("od_fat").innerHTML = Math.round(fatMainOff)
 
-    }
-    else if (find("maingain").checked) {
+    } else if (find("maingain").checked) {
         calories = weight * 18.5
         fatGainTrain = (calories - fatCalsTrain) / 9
         fatGainOff = (calories - fatCalsOff) / 9
         find("td_fat").innerHTML = Math.round(fatGainTrain)
         find("od_fat").innerHTML = Math.round(fatGainOff)
-
     }
 
     find("cals1").innerHTML = Math.round(calories)
